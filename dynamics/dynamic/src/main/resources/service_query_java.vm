@@ -1,0 +1,8 @@
+package ${serviceQueryPath};
+
+import com.cheng.common.dal.query.MapperQuery;
+
+
+public class ${serviceQueryFileName} extends MapperQuery{
+    private static final long serialVersionUID = 0L;
+}

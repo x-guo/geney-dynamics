@@ -1,0 +1,87 @@
+package com.ufenqi.mall.ccs.dal.entity;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.cheng.common.dal.entity.BaseEntity;
+
+@Entity
+@Table(name = "cc_track_user")
+public class CcsTrackUserDO extends BaseEntity {
+	
+	private static final long serialVersionUID = 3595458322509664441L;
+	
+	private Long userId;                //用户ID
+	private String userName;            //用户名
+	private String realName;            //真实姓名
+	private String cardId;              //银行卡号
+	private String universityName;      //学校
+	private String schoolName;          //校区
+	private Date userCreateDate;        //用户注册时间
+	private String mobile;              //手机
+	private Long target;                //处理者ID
+	private String status;              //处理状态 10待处理 20部分处理 30 处理完成
+	
+	public Long getTarget() {
+		return target;
+	}
+	public void setTarget(Long target) {
+		this.target = target;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getRealName() {
+		return realName;
+	}
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+	public String getCardId() {
+		return cardId;
+	}
+	public void setCardId(String cardId) {
+		this.cardId = cardId;
+	}
+	public String getUniversityName() {
+		return universityName;
+	}
+	public void setUniversityName(String universityName) {
+		this.universityName = universityName;
+	}
+	public String getSchoolName() {
+		return schoolName;
+	}
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
+	public Date getUserCreateDate() {
+		return userCreateDate;
+	}
+	public void setUserCreateDate(Date userCreateDate) {
+		this.userCreateDate = userCreateDate;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+}

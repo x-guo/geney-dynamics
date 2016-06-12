@@ -1,0 +1,38 @@
+package com.ufenqi.mall.ccs.dal.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.cheng.common.dal.entity.BaseEntity;
+
+/**
+ * id 和userId 相同，并不是所有的人都有这个对象，客服同学值班表
+ * 类CcsOnDutyDO.java的实现描述：TODO 类实现描述 
+ * @author haodch Sep 28, 2014 11:22:32 PM
+ */
+@Entity
+@Table(name = "cc_on_duty")
+@Deprecated
+public class CcsOnDutyDO extends BaseEntity {
+
+    private static final long serialVersionUID = 4780969379984275903L;
+    private Long              userId;                                 //
+    private String            status;                                 // on,off
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+}

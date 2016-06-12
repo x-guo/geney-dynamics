@@ -1,0 +1,61 @@
+package ${servicePath};
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
+import com.cheng.common.service.query.ResultPage;
+import com.cheng.common.service.validate.ValidationService;
+import ${entityName};
+import ${mapperName};
+import ${mapperQueryName};
+import ${serviceQueryName};
+
+@Service
+public class ${serviceFileName} {
+
+    @Resource
+    private ${mapperFileName} mapper;
+    @Resource
+    private ValidationService validationService;
+
+    public ResultPage<${entitySimpleName}> findPage(${serviceQueryFileName} query) {
+        validationService.validate(query);
+        ${mapperQueryFileName} param = new ${mapperQueryFileName}();
+        BeanUtils.copyProperties(query, param);
+        List<${entitySimpleName}> list = mapper.findList(param);
+
+        return new ResultPage<${entitySimpleName}>(list, query);
+    }
+
+    public List<${entitySimpleName}> findAll() {
+        return mapper.findAll();
+    }
+
+    public ${entitySimpleName} findOne(Long id) {
+        return mapper.findOne(id);
+    }
+
+    public void create(${entitySimpleName} entity) {
+        validationService.validate(entity);
+        mapper.insert(entity);
+    }
+
+    public void update(${entitySimpleName} entity) {
+        validationService.validate(entity);
+        ${entitySimpleName} oldEntity=mapper.findOne(entity.getId());
+        mergeEntity(entity,oldEntity);
+        mapper.update(oldEntity);
+    }
+
+    public void delete(Long id) {
+        mapper.delete(id);
+    }
+    
+    private void mergeEntity(${entitySimpleName} source,${entitySimpleName} target){
+    	//TODO 
+    }
+}

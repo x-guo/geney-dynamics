@@ -1,0 +1,65 @@
+package com.ufenqi.mall.ccs.dal.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.cheng.common.dal.entity.OptionEntity;
+
+@Entity
+@Table(name = "cc_track_item")
+public class CcsTrackItemDO extends OptionEntity {
+
+	private static final long serialVersionUID = -4087466454495651061L;
+	
+	private String content;             //跟踪内容 JSON字符串     
+	private String type;                //跟踪类型 101风控 201商品订单 202U基金订单
+	private Long source;                //来源 风控为风控ID 订单为订单ID
+	private Long target;                //处理者ID
+	private String status;              //状态 11 待处理 21已取消 22已转移 31已处理
+	private Long trackUserId;           //跟踪用户ID
+	private Long userId;                //用户ID
+	/*说明：OptionEntity 中的options为跟踪内容的标签  1为意向标记 使用请参考商品打标*/
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public Long getSource() {
+		return source;
+	}
+	public void setSource(Long source) {
+		this.source = source;
+	}
+	public Long getTarget() {
+		return target;
+	}
+	public void setTarget(Long target) {
+		this.target = target;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public Long getTrackUserId() {
+		return trackUserId;
+	}
+	public void setTrackUserId(Long trackUserId) {
+		this.trackUserId = trackUserId;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+}

@@ -1,0 +1,25 @@
+package ${mapperQueryPath};
+
+import java.util.Date;
+
+import com.cheng.common.dal.query.MapperQuery;
+
+
+public class ${mapperQueryFileName} extends MapperQuery{
+    private static final long serialVersionUID = 0L;
+
+	#foreach($!resultMap in $!resultMaps)
+    private ${resultMap.jdbcType} ${resultMap.prop};
+    #end
+    
+    
+    #foreach($!resultMap in $!resultMaps)
+    public void  ${resultMap.getAndSet.setter}(${resultMap.jdbcType} ${resultMap.prop}){
+    	this.${resultMap.prop}=${resultMap.prop};
+    }
+    
+    public ${resultMap.jdbcType} ${resultMap.getAndSet.getter}(){
+    	return ${resultMap.prop};
+    }
+    #end
+}

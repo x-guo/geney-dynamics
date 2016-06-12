@@ -1,0 +1,42 @@
+package com.ufenqi.mall.ccs.dal.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.cheng.common.dal.entity.BaseEntity;
+
+@Entity
+@Table(name = "cc_task")
+@Deprecated
+public class CcsTaskDO extends BaseEntity {
+
+    private static final long serialVersionUID = 5628763013126364688L;
+    private Long              orderId;
+    private Long              ccUserId;                               // 分配任务是指定的在线客服id,一个task 可以在不同的时间分配给不同的客服
+    private String            status;                                 // new,done,order,up,close
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public Long getCcUserId() {
+        return ccUserId;
+    }
+
+    public void setCcUserId(Long ccUserId) {
+        this.ccUserId = ccUserId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+}

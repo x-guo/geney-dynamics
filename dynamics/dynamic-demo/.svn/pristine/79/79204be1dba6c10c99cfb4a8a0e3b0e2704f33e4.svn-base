@@ -1,0 +1,43 @@
+package com.ufenqi.mall.ccs.dal.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.cheng.common.dal.entity.BaseEntity;
+
+@Entity
+@Table(name = "cc_track_entry")
+public class CcsTrackEntryDO extends BaseEntity {
+
+	private static final long serialVersionUID = -4848815540851759930L;
+	
+	private Long operator;           //操作人
+	private String operateType;      //操作类型
+	private String remark;           //备注
+	private Long trackItemId;        //跟踪内容ID
+	
+	public Long getTrackItemId() {
+		return trackItemId;
+	}
+	public void setTrackItemId(Long trackItemId) {
+		this.trackItemId = trackItemId;
+	}
+	public Long getOperator() {
+		return operator;
+	}
+	public void setOperator(Long operator) {
+		this.operator = operator;
+	}
+	public String getOperateType() {
+		return operateType;
+	}
+	public void setOperateType(String operateType) {
+		this.operateType = operateType;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+}

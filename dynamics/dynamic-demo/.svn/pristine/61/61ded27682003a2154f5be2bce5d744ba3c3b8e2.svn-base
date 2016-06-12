@@ -1,0 +1,89 @@
+package com.ufenqi.mall.ccs.dal.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.cheng.common.dal.entity.BaseEntity;
+
+@Entity
+@Table(name = "cc_task_entry")
+public class CcsTaskEntryDO extends BaseEntity {
+
+    private static final long serialVersionUID = 4153586793472656748L;
+
+    private Long              ccTaskId;
+    private Long              orderId;
+    private Long              customerId;                              // 客户用户id
+
+    private Long              userId;                                 // 客服同学的用户id
+    private String            realName;                               //
+    private String            content;                                // 客服备注内容
+
+    private String            type;                                   // 核定 confirm 下单 order 风控 can_order,其他;other
+    
+    private String            orderType;                              // 见OrderTypeConstant
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Long getCcTaskId() {
+        return ccTaskId;
+    }
+
+    public void setCcTaskId(Long ccTaskId) {
+        this.ccTaskId = ccTaskId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
+}

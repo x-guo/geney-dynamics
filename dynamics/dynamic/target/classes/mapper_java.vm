@@ -1,0 +1,9 @@
+package ${mapperPath};
+
+import com.cheng.common.dal.mapper.BaseMapper;
+import ${entityName};
+
+
+public interface ${mapperFileName} extends BaseMapper<${entitySimpleName}, Long> {
+
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ufenqi.marketauth.dal.mapper.MarketAuthMapper">
+    <sql id="all_columns">
+        ID,CREATEDATE,UPDATEDATE,VERSION,AUTHPIC1,AUTHPIC2,AUTHPIC3,USERID,STATUS,NOTE
+    </sql>
+    <sql id="where" >
+        <where>
+                	<if test="id != null">
+            	and ID = #{id}
+            </if>
+                	<if test="createDate != null">
+            	and CREATEDATE = #{createDate}
+            </if>
+                	<if test="updateDate != null">
+            	and UPDATEDATE = #{updateDate}
+            </if>
+                	<if test="version != null">
+            	and VERSION = #{version}
+            </if>
+                	<if test="authPic1 != null">
+            	and AUTHPIC1 = #{authPic1}
+            </if>
+                	<if test="authPic2 != null">
+            	and AUTHPIC2 = #{authPic2}
+            </if>
+                	<if test="authPic3 != null">
+            	and AUTHPIC3 = #{authPic3}
+            </if>
+                	<if test="userId != null">
+            	and USERID = #{userId}
+            </if>
+                	<if test="status != null">
+            	and STATUS = #{status}
+            </if>
+                	<if test="note != null">
+            	and NOTE = #{note}
+            </if>
+                </where>
+    </sql>
+    <sql id="orderById"> ORDER BY ID DESC </sql>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="MarketAuthDO">
+        INSERT INTO ac_auth_offline (<include refid="all_columns"/>
+        ) VALUES 
+        (#{id},#{createDate},#{updateDate},#{version},#{authPic1},#{authPic2},#{authPic3},#{userId},#{status},#{note})
+    </insert>
+    <update id="update" parameterType="MarketAuthDO">
+        UPDATE ac_auth_offline SET
+                    <![CDATA[ ID = #{id}]]>,   
+                    <![CDATA[ CREATEDATE = #{createDate}]]>,   
+                    <![CDATA[ UPDATEDATE = #{updateDate}]]>,   
+                    <![CDATA[ VERSION = #{version}]]>,   
+                    <![CDATA[ AUTHPIC1 = #{authPic1}]]>,   
+                    <![CDATA[ AUTHPIC2 = #{authPic2}]]>,   
+                    <![CDATA[ AUTHPIC3 = #{authPic3}]]>,   
+                    <![CDATA[ USERID = #{userId}]]>,   
+                    <![CDATA[ STATUS = #{status}]]>,   
+                    <![CDATA[ NOTE = #{note}]]>,   
+                version = version+1 
+        WHERE
+        id=#{id} and version = #{version}
+    </update>
+    <select id="findOne" parameterType="long" resultType="MarketAuthDO">
+        SELECT <include refid="all_columns"/>
+        FROM ac_auth_offline WHERE ID=#{id}
+    </select>
+    <select id="findAll" resultType="MarketAuthDO">
+        SELECT <include refid="all_columns"/>
+        FROM ac_auth_offline
+    </select>
+    <delete id="delete" parameterType="long">
+        DELETE FROM ac_auth_offline WHERE id=#{id}
+    </delete>
+    <delete id="deleteByIds">
+        DELETE FROM ac_auth_offline
+        <where>
+            ID in
+            <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+    </delete>
+    
+    <select id="findList" resultType="MarketAuthDO">
+        SELECT <include refid="all_columns"/>
+        FROM ac_auth_offline
+        <include refid="where"/> <include refid="orderById"/>
+        LIMIT #{offset}, #{size}
+    </select>
+    <select id="getByIds" parameterType="list" resultType="MarketAuthDO">
+        SELECT <include refid="all_columns"/>
+        FROM ac_auth_offline
+        <where>
+            ID in
+            <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+    <select id="countList" resultType="long">
+        SELECT count(1) FROM ac_auth_offline <include refid="where"/> <include refid="orderById"/>
+    </select>
+    <select id="count" resultType="long">
+        SELECT count(1) FROM ac_auth_offline  <include refid="orderById"/>
+    </select>
+</mapper>
